@@ -1,0 +1,34 @@
+body{
+  background: white;
+}
+
+.boton_editar_img{
+ margin-left: 200px;
+ margin-bottom: 30px;  
+}
+
+.contenedor{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.fila{
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.columna img{
+  box-sizing: border-box;
+  width: 100%;
+  flex: 25%;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 50px;
+}
+
+#separador {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}

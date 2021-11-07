@@ -1,0 +1,139 @@
+
+body{
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+}
+
+header .container-fluid{
+  display: grid;  
+  grid-template-rows: auto auto;
+}
+.user-header{
+  background: rgb(230, 126,34);
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.internauta-header{
+  background: rgb(230, 126,34);
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  display:flex;
+}
+.internauta-header .entrada{
+  display: grid;
+  grid-template-rows: 50% auto;
+  padding: 3px;
+  margin: 2px;
+}
+.internauta-header .elemento{
+  display: flex;
+  flex-wrap: wrap;
+}
+.internauta-header .elemento #botonInicio{
+  background: rgb(230, 126, 34);
+  color: black;
+  border: rgb(186, 74, 0);
+}
+.internauta-header .elemento #botonInicio:hover{
+  background: rgb(66, 73, 73);
+  color: black;
+  border: rgb(186, 74, 0);
+}
+header nav {
+  position: relative;
+  bottom: 7px;
+}
+ nav{
+  height: 100px;
+  }
+#cabeza{
+  margin: 5px;
+  padding: 5px;
+}
+
+#ButtonUser{
+  position: relative;
+  bottom: 80px;
+  margin: 10px;
+  background: rgb(230, 126, 34);
+  color: black;
+  border: rgb(186, 74, 0);
+}
+
+#ButtonNav:hover{
+  color:rgb(186, 74, 0) ;
+}
+#dropTarea:hover{
+  color: rgb(186, 74, 0);
+}
+
+ 
+
+#ButtonAgendah1{
+  position: relative;
+  top:3px;
+}
+
+
+
+
+
+/*.resultados{
+  position: relative;
+  bottom: 50px;
+}*/
+
+
+
+
+
+
+.redes ul{
+  text-align: center;
+}
+
+footer .redes{
+  position: relative;
+  background:rgb(230, 126, 34 ) ;
+  height: 100px;
+}
+
+footer label{
+  color:black;
+}
+
+footer .contactos{
+  position: relative;
+  top:50px;
+}
+
+section {
+    position: relative;
+    top: 100px;
+}
+
+.usuario{
+  position: relative;
+  right: 80px;
+  
+}
+
+ul{
+  list-style-type: none;
+}
+
+
+
+table {text-align-last: center;}
+
+
+.redes ul li{
+  display: inline-block;
+  padding: 5px;
+}
+

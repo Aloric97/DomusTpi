@@ -1,0 +1,171 @@
+{% load static %}
+---
+layout: default
+---
+<h1 class="primary">Cargar propiedad</h1>
+<form class="needs-validation">
+    <div class="form-row">
+        <label class="form-label" for="tipo" name="tipo" required>Seleccionar el tipo de la propiedad: </label>
+        <select name="tipo">
+            <!-- TODO pasar a javascript -->
+            {% for tipo in site.data.tipos %}
+            <option value="{{tipo.tipo}}">{{tipo.tipo}}</option>
+            {% endfor %}
+
+        </select>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
+    <h3>Ubicacion</h3>
+    <div class="row">
+        <div class="form-group  needs-validation col-3">
+            <label class="form-label" for="pais">Pais: </label>
+            <input class="form-control" list="pais" name="pais" class="form-control" required id="pais">
+            <datalist id="pais">
+
+                {% for pais in site.data.paises %}
+                <option value="{{pais.name}}">{{pais.name}}</option>
+                {% endfor %}
+
+            </datalist>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Mal
+            </div>
+        </div>
+        <div class="form-group col-3" id="provincias">
+            <label class="form-label" for="provincia">Provincia: </label>
+            <input class="form-control" name="provincia" class="form-control">
+        </div>
+        <div class="form-group col-3">
+            <label class="form-label" for="localidad">Localidad: </label>
+            <input class="form-control" name="localidad" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Mal
+            </div>
+        </div>
+        <div class="form-group col-3">
+            <label class="form-label" for="CP">CP: </label>
+            <input class="form-control" name="CP" type="number">
+        </div>
+    </div>
+
+    <h4>Direccion</h4>
+    <div class="row">
+        <div class="form-group col-8">
+            <label class="form-label" for="calle">Calle</label>
+            <input class="form-control" name="calle">
+        </div>
+        <div class="form-group col-2">
+            <label class="form-label" for="piso">Piso</label>
+            <input class="form-control" name="piso" type="number" min="0" max="100">
+        </div>
+        <div class="form-group col-2">
+            <label class="form-label" for="numero">Numero</label>
+            <input class="form-control" name="numero">
+        </div>
+    </div>
+
+    <h4>Datos generales</h4>
+    <div class="row">
+        <div class="form-group col-4">
+            <label class="form-label" for="antiguedad">Antiguedad</label>
+            <input class="form-control" name="antiguedad" type="number">
+        </div>
+        <div class="form-group col-4">
+            <label class="form-label" for="Artefactos">Artefactos</label>
+            <input class="form-control" name="Artefactos" type="number">
+        </div>
+        <div class="form-group col-4">
+            <label class="form-label" for="ambientes">Ambientes</label>
+            <input class="form-control" name="ambientes" type="number">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-4">
+            <label class="form-label" for="banios">Cant. de baños</label>
+            <input class="form-control" name="banios" type="number">
+        </div>
+        <div class="form-group col-4">
+            <label class="form-label" for="dormintorios">Cant. de dormitorios</label>
+            <input class="form-control" name="dormintorios" type="number">
+        </div>
+        <div class="form-group col-4">
+            <label class="form-label" for="suite">Cant. de suite</label>
+            <input class="form-control" name="suite" type="number">
+        </div>
+    </div>
+    <label class="form-label" for="desc"> Ingrese una descripcion corta</label>
+    <input class="form-control" name="desc">
+    <br>
+    <label class="form-label" for="descripcion"> Ingrese una descripcion larga.</label>
+    <textarea class="form-control" name="descripcion"></textarea>
+
+    <h4>Propietarios</h4>
+    <label class="form-label" name="propietario">Propietario: </label>
+    <input class="form-control" list="propietarios" name="propietario">
+    <datalist id="propietarios">
+        {% for prop in site.data.propietario %}
+        <option value="{{prop.nombre}}">{{prop.nombre}}</option>
+        {% endfor %}
+    </datalist>
+
+    <h4>Contrato</h4>
+    <div class="row">
+        <div class="form-group col-6">
+            <label class="form-label" for="contrato">Seleccione el tipo de contrato:</label>
+            <select name="contrato">
+                {% for tipo in site.data.contrato %}
+                <option value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-6">
+            <label class="form-label" for="precio">Precio: </label>
+            <input class="form-control" name="precio" type="number">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+    // function generar(elemento, json){
+    //     Object.entries(json).forEach(element => {
+    //         var elementoHijo = document.createElement('OPTION')
+    //         elementoHijo.setAttribute('value', element.name)
+    //         elementoHijo.setAttribute('text', element.name)
+    //         elemento.appendChild(elementoHijo)
+    //     });
+    // }
+
+
+
+</script>

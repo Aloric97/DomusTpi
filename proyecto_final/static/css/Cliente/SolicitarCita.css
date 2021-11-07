@@ -1,0 +1,9 @@
+form {
+    margin-right: 100px;
+    margin-left: 100px;
+    background: white;
+    border-radius: 50px;
+}
+form h1 {
+    margin-bottom: 20px;
+}

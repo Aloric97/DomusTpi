@@ -1,0 +1,5 @@
+Nombre de los PDF
+ReporteJefaComercializacion.pdf (Los reportes que necesita la jefa de comercialización)
+PagoAlquiler.pdf (Comprobante de pago de un alquiler)
+ComprobanteVenta.pdf (Comprobante de pago por una venta)
+ReporteGerenteGral.pdf (Los reportes que necesita el gerente general

@@ -1,0 +1,52 @@
+ header{
+  background: rgb(44, 62, 80);
+  width: 95%;
+  height: 100px;
+  position: relative;
+  left: 30px;
+ 
+
+}
+.iniciarS{
+    position:relative;
+    left: 800px;
+    bottom: 50px;
+    font-size: 20px;   
+}
+img, div.logo{
+    position: relative;
+    left: 50px;
+    font-size: 18px;
+}
+.registrarse{
+    position: relative;
+    left: 1050px;
+    bottom: 48px;
+}
+section.centro{
+    background: url(../Imagenes/centro.jpg);
+}
+
+.buscador{
+    position: relative;
+    left: 400px;
+    top: 230px;
+    
+}
+.buscador input{
+    width: 300px;
+    height: 25px;
+    outline: none;
+    border: 1px solid black;
+}
+.combox{
+    position: relative;
+    top:200px;
+    left: 710px;
+}
+.combox select{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid black;
+}

@@ -1,0 +1,8 @@
+- nombre: Juan Perez
+  dni: 37564123
+  cuil: 12459879631235 
+  fechaDeNac: 1950-10-05 00:00:00
+- nombre: Nuevo
+  dni: 00000000
+  cuil: 00000000000000 
+  fechaDeNac: 0000-00-00 00:00:00

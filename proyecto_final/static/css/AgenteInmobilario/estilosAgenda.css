@@ -1,0 +1,139 @@
+body{
+    display: grid;
+    grid-template-rows: auto 80% auto;
+  }
+  /*
+  header .container-fluid{
+    display: grid;  
+    grid-template-rows: auto auto;
+  }
+  .user-header{
+    background: rgb(230, 126,34);
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  header nav {
+    position: relative;
+    bottom: 7px;
+  }
+  
+  #ButtonUser{
+    position: relative;
+    bottom: 80px;
+    margin: 10px;
+    background: rgb(230, 126, 34);
+    color: black;
+    border: rgb(186, 74, 0);
+  }
+  
+  #ButtonNav:hover{
+    color:rgb(186, 74, 0) ;
+  }
+  #dropTarea:hover{
+    color: rgb(186, 74, 0);
+  }
+  */
+  .container{
+    position: relative;
+    bottom: 5px;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 20pxS;
+  }
+
+  #input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 206, 158);
+    border-radius: 10px;
+  }
+
+  #botonE {
+    background: rgb(230, 126, 34);
+    color: black;
+    border: rgb(186, 74, 0);
+    position: relative;
+    /*top: 50px;*/
+  }
+
+  table {text-align-last: center;}
+  /*
+  .container h1 {
+    position: relative;
+    bottom: 88px;
+  }
+  .resultados{
+    position: relative;
+    bottom: 50px;
+  }*/
+  
+
+  
+ 
+  /*
+  .anterior {
+    position: relative; left: 60px;
+  }
+  .siguiente {
+    position: relative; right: 60px;
+  }
+  
+  footer .redes{
+    position: relative;
+    background:rgb(230, 126, 34 ) ;
+    height: 100px;
+  }
+  
+  footer label{
+    color:black;
+  }
+  
+  footer .contactos{
+    position: relative;
+    top:300px;
+  }
+  
+  section {
+      position: relative;
+      top: 100px;
+  }
+  ul{
+    list-style-type: none;
+  }
+  .usuario{
+    position: relative;
+    right: 80px;
+    
+  }
+  
+  #validationCustom01 {
+    background: rgb(112, 123, 124 );
+  }
+  #boton {
+    background: rgb(230, 126, 34);
+    color: black;
+    border: rgb(186, 74, 0);
+    position: relative;
+    bottom: 100px;
+  }
+  
+  
+  
+  #accordionExample{background: rgb(112, 123, 124 );}
+  .redes ul{
+    text-align: center;
+  }
+  .redes ul li{
+    display: inline-block;
+    padding: 5px;
+  }
+  */
+  

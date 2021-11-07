@@ -1,0 +1,46 @@
+nav{
+    background:rgb(186, 74, 0);
+    height:100px;
+    }
+    
+  footer .redes{
+    position: relative;
+    top:350px;
+    background:rgb(186, 74, 0) ;
+    height: 100px;
+  
+  }
+  
+
+  footer label{
+    color:black;
+  }
+  
+  footer .contactos{
+    position: relative;
+    top:300px;
+  }
+  .container{
+    position:relative;
+    top:150px;
+}
+#carouselExampleControls{
+  background:rgb(112, 123, 124 );
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+ul{
+  list-style-type: none;
+}
+.redes ul{
+  text-align: center;
+}
+.redes ul li{
+  display: inline-block;
+  padding: 5px;
+}
+#boton {
+  background: rgb(186, 74, 0);
+  color: black;
+  border: rgb(186, 74, 0);}

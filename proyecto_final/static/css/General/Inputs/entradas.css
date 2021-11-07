@@ -1,0 +1,36 @@
+.input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 206, 158);
+    border-radius: 10px;
+}
+/*
+#validationCustom01 {
+    background: rgb(112, 123, 124 );
+    color: #fff;
+}
+*/
+#botonE {
+    background: rgb(230, 126, 34);
+    color: black;
+    border: rgb(186, 74, 0);
+    position: relative;
+    /*top: 50px;*/
+}
+
+#separador {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#entrada {
+    border: none;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 206, 158);
+    border-radius: 10px;
+    text-align: center;
+}

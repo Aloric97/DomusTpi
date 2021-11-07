@@ -1,0 +1,65 @@
+.container{
+    position: relative;
+    bottom: 5px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+}
+
+.container h1 {
+    position: relative;
+    bottom: 88px;
+}
+
+.buscador{
+    background:url(../../../../Imagenes/fondoBuscador.jpg);
+    height: 500px;
+    background-size: cover;
+    background-position:center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2%;
+    
+}
+
+.buscador:before{
+    content: "";
+    width: 98.1%;
+    height: 500px;
+    background-color: rgb(66, 73, 73);
+    position:absolute;
+    opacity: 0.6;
+    border-radius: 2%;
+}
+
+.buscador h1,h3{
+    position: relative;
+}
+
+#boton {
+    background: rgb(230, 126, 34);
+    color: black;
+    border: rgb(186, 74, 0);
+    position: relative;
+    bottom: 100px;
+}
+
+#carouselExampleControls{
+    background:rgb(112, 123, 124 );
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#accordionExample{background: rgb(112, 123, 124 );}
+
+.anterior {
+    position: relative; left: 60px;
+}
+
+.siguiente {
+    position: relative; right: 60px;
+}
+

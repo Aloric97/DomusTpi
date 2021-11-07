@@ -1,0 +1,11 @@
+- contrato: Alquiler
+  desc: Casa chiquita pero linda, con 2 dormitorios bien iluminada
+  precio: 100
+
+- contrato: Ventas
+  desc: Departamento zona centrica 3 dormitorios, cochera y permite animales.
+  precio: 100
+
+- contrato: Alquiler
+  desc: Casa chiquita pero fea.
+  precio: 100

@@ -1,0 +1,8 @@
+Agente inmobiliario
+-Principal
+-Agenda
+-Carga: falta mejorar
+-DatosPropiedad: boton del header
+
+Internauta
+-Principal

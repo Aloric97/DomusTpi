@@ -1,0 +1,15 @@
+input .row{
+    width: 50%;
+    height: 50%;
+    border: none;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 206, 158);
+    border-radius: 10px;
+    
+}
+
+#row{
+    margin-left: 15px;
+    margin-right: 15px;
+}

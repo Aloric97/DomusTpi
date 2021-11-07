@@ -1,0 +1,26 @@
+/*Clientes*/
+#buscar {
+    position: relative;
+    left: 150px;
+}
+
+#entrada {
+    width: 500%;
+    height: 100%;
+    border: none;
+    position: relative;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 206, 158);
+    border-radius: 10px;
+}
+
+/*Reportes*/
+#tabla {
+    background-color: rgb(238, 206, 158);;
+}
+
+/*Transacciones*/
+#fecha {
+    position: relative;
+    right: 150px;
+}
