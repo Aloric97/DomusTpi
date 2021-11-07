@@ -224,7 +224,7 @@ def JefaComercializacion_Reportes(request):
 def JefaComercializacion_Propiedades(request):
     context = {}
     return render(request, 'JefaComercializacion/Propiedades.html',context)
-    
+
 def JefaComercializacion_Actuales(request):
     context = {}
     return render(request, 'JefaComercializacion/Actuales.html',context)
@@ -276,7 +276,7 @@ def Secretaria_DatosPropiedad(request):
 def Secretaria_Editar(request):
     context = {}
     return render(request, 'Secretaria/Editar.html',context)
-    
+
 def Secretaria_EditarCita(request):
     context = {}
     return render(request, 'Secretaria/EditarCita.html',context)
