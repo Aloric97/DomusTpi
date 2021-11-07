@@ -1,6 +1,11 @@
 from django.shortcuts import render
 
 
+def index(request):
+    context = {}
+    return render(request, 'index.html',context)
+
+
 
 def AdministradorWeb_AddUser(request):
     context = {}
@@ -180,7 +185,7 @@ def JefaAdministracion_Principal(request):
     context = {}
     return render(request, 'JefaAdministracion/Principal',context)
 
-def JefaAdministracion_login(request):
+def JefaAdministracion_Clientes(request):
     context = {}
     return render(request, 'JefaAdministracion/Clientes.html',context)
 
@@ -191,3 +196,99 @@ def JefaAdministracion_Reportes(request):
 def JefaAdministracion_Transacciones(request):
     context = {}
     return render(request, 'JefaAdministracion/Transacciones.html',context)
+
+
+
+
+
+def JefaComercializacion_DatosPropiedad(request):
+    context = {}
+    return render(request, 'JefaComercializacion/DatosPropiedad.html',context)
+
+def JefaComercializacion_Inmuebles(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Inmuebles.html',context)
+
+def JefaComercializacion_Principal(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Principal',context)
+
+def JefaComercializacion_Clientes(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Clientes.html',context)
+
+def JefaComercializacion_Reportes(request):
+    context = {}
+    return render(request,'JefaComercializacion/Reportes.html',context)
+
+def JefaComercializacion_Propiedades(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Propiedades.html',context)
+    
+def JefaComercializacion_Actuales(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Actuales.html',context)
+
+def JefaComercializacion_Agenda(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Agenda.html',context)
+
+def JefaComercializacion_Antiguos(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Antiguos',context)
+
+def JefaComercializacion_Historico(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Historico',context)
+
+def JefaComercializacion_ClientesHistorico(request):
+    context = {}
+    return render(request,'JefaComercializacion/ClientesHistorico.html',context)
+
+def JefaComercializacion_Vendidas(request):
+    context = {}
+    return render(request, 'JefaComercializacion/Vendidas.html',context)
+
+
+
+
+
+def Secretaria_AceptarSolicitud(request):
+    context = {}
+    return render(request, 'Secretaria/AceptarSolicitud.html',context)
+
+def Secretaria_Agenda(request):
+    context = {}
+    return render(request, 'Secretaria/Agenda.html',context)
+
+def Secretaria_CancelarCita(request):
+    context = {}
+    return render(request, 'Secretaria/CancelarCita',context)
+
+def Secretaria_Clientes(request):
+    context = {}
+    return render(request, 'Secretaria/Clientes.html',context)
+
+def Secretaria_DatosPropiedad(request):
+    context = {}
+    return render(request,'Secretaria/DatosPropiedad.html',context)
+
+def Secretaria_Editar(request):
+    context = {}
+    return render(request, 'Secretaria/Editar.html',context)
+    
+def Secretaria_EditarCita(request):
+    context = {}
+    return render(request, 'Secretaria/EditarCita.html',context)
+
+def Secretaria_Inmuebles(request):
+    context = {}
+    return render(request, 'Secretaria/Inmuebles.html',context)
+
+def Secretaria_Principal(request):
+    context = {}
+    return render(request, 'Secretaria/Principal',context)
+
+def Secretaria_Solicitudes(request):
+    context = {}
+    return render(request, 'Secretaria/Solicitudes',context)

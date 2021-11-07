@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -7,12 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--ESTILOS CSS-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/headerYfooter/estilos.css">
-    <link rel="stylesheet" href="../assets/css/General/Inputs/entradas.css">
-    <link rel="stylesheet" href="../assets/css/Secretaria/Estilos.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/headerYfooter/estilos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/General/Inputs/entradas.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Secretaria/Estilos.css' %}">
     <title>Agenda</title>
 
   </head>
@@ -25,7 +28,7 @@
             <li>
               <div class="container-fluid d-flex justify-content-start" id="cabeza">
                 <p class="d-flex justify-content-center" style="font-family:Cambria">
-                  <img src="../Imagenes/Logo.png" class="img-fluit mt-1 offset-4 rounded-circle " alt="..." width="45">
+                  <img src="../static/img/Logo.png" class="img-fluit mt-1 offset-4 rounded-circle " alt="..." width="45">
                   <strong>Domus</strong>
                 </p>
               </div>
@@ -36,7 +39,7 @@
                   Usuario
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="../internauta/Principal.html">Salir</a></li>
+                  <li><a class="dropdown-item" href="{% url 'internauta_Principal' %}">Salir</a></li>
                 </ul>
               </div>
             </li>
@@ -45,23 +48,23 @@
         <div class="main-header">
         <li class="row">
           <nav class="navbar navbar-expand-lg navbar-light" >
-           <a class="navbar-brand btn-lg font-weight-bold" href="Principal.html" id="ButtonNav">Principal</a>
+           <a class="navbar-brand btn-lg font-weight-bold" href="{% url 'Secretaria_Principal' %}" id="ButtonNav">Principal</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active btn-lg font-weight-bold" href="Inmuebles.html" id="ButtonNav">Catálogo<span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link active btn-lg font-weight-bold" href="{% url 'Secretaria_Inmuebles' %}" id="ButtonNav">Catálogo<span class="sr-only">(current)</span></a>
               <div class="dropdown">
                 <button class="btn dropdown-toggle text-dark btn-lg font-weight-bold" type="button" id="dropTarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Tareas
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <a class="dropdown-item" href="Solicitudes.html">Solicitudes</a>
-                  <a class="dropdown-item" href="Agenda.html">Agenda</a>
-                  <a class="dropdown-item" href="EditarCita.html">Editar cita</a>
-                  <a class="dropdown-item" href="CancelarCita.html">Cancelar cita</a>
-                  <a class="dropdown-item" href="Clientes.html">Clientes</a>
+                    <a class="dropdown-item" href="{% url 'Secretaria_Solicitudes' %}">Solicitudes</a>
+                    <a class="dropdown-item" href="{% url 'Secretaria_Agenda' %}">Agenda</a>
+                    <a class="dropdown-item" href="{% url 'Secretaria_EditarCita' %}">Editar cita</a>
+                    <a class="dropdown-item" href="{% url 'Secretaria_CancelarCita' %}">Cancelar cita</a>
+                    <a class="dropdown-item" href="{% url 'Secretaria_Clientes' %}">Clientes</a>
                 </div>
               </div>
             </div>
@@ -143,7 +146,7 @@
       </div>
       <div class="row mt-5">
           <div class="col text-center">
-            <a href="EditarCita.html" type="submit" class="btn font-weight-bold" id="botonE" onclick="Alerta()">Actualizar cita</a>
+            <a href="{% url 'Secretaria_EditarCita' %}" type="submit" class="btn font-weight-bold" id="botonE" onclick="Alerta()">Actualizar cita</a>
           </div>
       </div>
     </div>
