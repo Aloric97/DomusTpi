@@ -34,21 +34,9 @@
 
         <!--login-->
 
-        <form action="{% url 'internauta_Principal' %}>
-          <div class="mb-4">
-            <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" name="email" id="" required>
-          </div>
-          <div class="mb-4">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="password" id="" required>
-          </div>
-          <div class="mb-4 form-check">
-            <input type="checkbox" name="connected" class="form-check-input"  id="">
-            <label for="connected" class="form-check-label">Recuérdame</label>
-          </div>
-
-
+        <form method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
           </div>
