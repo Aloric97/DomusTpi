@@ -124,7 +124,7 @@ def EmpleadoMarketing_Inmuebles(request):
 
 def EmpleadoMarketing_Principal(request):
     context = {}
-    return render(request, 'EmpleadoMarketing/Principal',context)
+    return render(request, 'EmpleadoMarketing/Principal.html',context)
 
 
 
@@ -140,7 +140,7 @@ def GerenteGeneral_Inmuebles(request):
 
 def GerenteGeneral_Principal(request):
     context = {}
-    return render(request, 'GerenteGeneral/Principal',context)
+    return render(request, 'GerenteGeneral/Principal.html',context)
 
 def GerenteGeneral_Reportes(request):
     context = {}
@@ -161,7 +161,7 @@ def internauta_Inmuebles(request):
 
 def internauta_Principal(request):
     context = {}
-    return render(request, 'internauta/Principal',context)
+    return render(request, 'internauta/Principal.html',context)
 
 def internauta_login(request):
     context = {}
@@ -183,7 +183,7 @@ def JefaAdministracion_Inmuebles(request):
 
 def JefaAdministracion_Principal(request):
     context = {}
-    return render(request, 'JefaAdministracion/Principal',context)
+    return render(request, 'JefaAdministracion/Principal.html',context)
 
 def JefaAdministracion_Clientes(request):
     context = {}
@@ -211,7 +211,7 @@ def JefaComercializacion_Inmuebles(request):
 
 def JefaComercializacion_Principal(request):
     context = {}
-    return render(request, 'JefaComercializacion/Principal',context)
+    return render(request, 'JefaComercializacion/Principal.html',context)
 
 def JefaComercializacion_Clientes(request):
     context = {}
@@ -235,11 +235,11 @@ def JefaComercializacion_Agenda(request):
 
 def JefaComercializacion_Antiguos(request):
     context = {}
-    return render(request, 'JefaComercializacion/Antiguos',context)
+    return render(request, 'JefaComercializacion/Antiguos.html',context)
 
 def JefaComercializacion_Historico(request):
     context = {}
-    return render(request, 'JefaComercializacion/Historico',context)
+    return render(request, 'JefaComercializacion/Historico.html',context)
 
 def JefaComercializacion_ClientesHistorico(request):
     context = {}
@@ -263,7 +263,7 @@ def Secretaria_Agenda(request):
 
 def Secretaria_CancelarCita(request):
     context = {}
-    return render(request, 'Secretaria/CancelarCita',context)
+    return render(request, 'Secretaria/CancelarCita.html',context)
 
 def Secretaria_Clientes(request):
     context = {}
@@ -287,8 +287,8 @@ def Secretaria_Inmuebles(request):
 
 def Secretaria_Principal(request):
     context = {}
-    return render(request, 'Secretaria/Principal',context)
+    return render(request, 'Secretaria/Principal.html',context)
 
 def Secretaria_Solicitudes(request):
     context = {}
-    return render(request, 'Secretaria/Solicitudes',context)
+    return render(request, 'Secretaria/Solicitudes.html',context)
