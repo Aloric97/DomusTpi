@@ -1,7 +1,6 @@
-
     <!-- Encabezado -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow" style="background-color: #ffc852;">
-      <a class="navbar-brand fs-1" href="index.html">
+      <a class="navbar-brand fs-1" href="{% url 'internauta_Principal' %}">
         <img src="../static/img/logo.svg" alt="Logo Domus" width="100" height="100" class="d-inline-block align-text-center">
         Domus
       </a>
@@ -10,17 +9,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav ms-auto text-center">
-        <a class="nav-link active fs-5" aria-current="page" href="{% url 'AdministradorWeb_Principal' %}">Inicio</a>
-        <a class="nav-link fs-5" href="{% url 'AdministradorWeb_Inmuebles' %}">Catálogo</a>
-        <div class="dropdown">
-          <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            Tareas
-          </a>
-          <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item p-5" href="{% url 'AdministradorWeb_agregar_usuario' %}">Añadir Usuario</a></li>
-            <li><a class="dropdown-item" href="{% url 'AdministradorWeb_EliminarUsuario' %}">Eliminar Usuario</a></li>
-          </ul>
-        </div>
+        <a class="nav-link fs-5" aria-current="page" href="{% url 'internauta_Principal' %}">Inicio</a>
+        <a class="nav-link active fs-5" href="{% url 'internauta_Inmuebles' %}">Catálogo</a>
+        <a class="nav-link fs-5" href="#">¿Quiénes Somos?</a>
       </div>
       <div class="d-flex flex-row justify-content-center">
         <a href="{% url 'login' %}" class="btn btn-outline-dark me-2 ms-2 fs-5">Iniciar Sesión</a>
@@ -28,4 +19,3 @@
       </div>
       </div>
     </nav>
-

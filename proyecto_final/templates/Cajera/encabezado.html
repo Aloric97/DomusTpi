@@ -10,15 +10,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav ms-auto text-center">
-        <a class="nav-link active fs-5" aria-current="page" href="{% url 'AdministradorWeb_Principal' %}">Inicio</a>
-        <a class="nav-link fs-5" href="{% url 'AdministradorWeb_Inmuebles' %}">Catálogo</a>
+        <a class="nav-link active fs-5" aria-current="page" href="{% url 'Cajera_Principal' %}">Inicio</a>
+        <a class="nav-link fs-5" href="{% url 'Cajera_Inmuebles' %}">Catálogo</a>
         <div class="dropdown">
           <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
             Tareas
           </a>
           <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item p-5" href="{% url 'AdministradorWeb_agregar_usuario' %}">Añadir Usuario</a></li>
-            <li><a class="dropdown-item" href="{% url 'AdministradorWeb_EliminarUsuario' %}">Eliminar Usuario</a></li>
+            <li><a class="dropdown-item" href="{% url 'Cajera_Alquileres' %}">Caja de alquileres</a></li>
+            <li><a class="dropdown-item" href="{% url 'Cajera_Ventas' %}">Caja de ventas</a></li>
+            <li><a class="dropdown-item" href="{% url 'Cajera_Cierre' %}">Cierre de caja</a></li>
+            <li><a class="dropdown-item" href="{% url 'Cajera_Transacciones' %}">Movimientos</a></li>
+
           </ul>
         </div>
       </div>
