@@ -9,7 +9,17 @@ class LoginForm(forms.Form):
     contraseña = forms.CharField(widget=forms.PasswordInput)
 
 class CreateUserForm(UserCreationForm):
+    # UserCreationForm predeterminado proporciona username, password1 y password2.
+    # Incluyendo from django.contrib.auth import User se pueden agregar más campos.
+    email = forms.EmailField(required=True)
+    nombre = forms.CharField(required=True)
+
     class Meta:
         model = User
-        fields =['username','first_name','last_name', 'email', 'password1', 'password2']
-
+        fields = [    # especifica los campos a renderizar (registro.html) y su orden
+            'nombre',
+            'username',
+            'email',
+            'password1',
+            'password2',
+        ]

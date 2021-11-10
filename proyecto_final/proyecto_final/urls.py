@@ -19,7 +19,7 @@ from aplicacion import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index, name='index'),
+    path('', views.Principal, name='Principal'),
     path('logout/', views.logoutUser, name='logout'),
     path("", include("aplicacion.urls"), name="perfiles"),
 
@@ -67,7 +67,7 @@ urlpatterns = [
 
     path('internauta/DatosPropiedad',views.internauta_DatosPropiedad, name='internauta_DatosPropiedad'),
     path('internauta/Inmuebles',views.internauta_Inmuebles, name='internauta_Inmuebles'),
-    path('internauta/Principal',views.internauta_Principal, name='internauta_Principal'),
+    path('Principal', views.Principal, name='Principal'),
     path('internauta/register',views.internauta_register, name='internauta_register'),
 
 

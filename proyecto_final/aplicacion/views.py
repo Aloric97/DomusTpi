@@ -15,23 +15,16 @@ def IniciarSesion(request):
         usuario = request.POST['username']
         contraseña = request.POST['password']
         usuario = authenticate(username=usuario, password=contraseña)
-        print("SUCCESS")
 
         if usuario is not None:
             if usuario.is_active:
                 login(request, usuario)
-                if request.user.groups.filter(name='administradorWeb').exists():
-                        return redirect("AdministradorWeb_Principal")
-
-                elif request.user.groups.filter()[0].name == 'Secretario':
-                        return redirect("Secretaria_Principal")
-                elif request.user.groups.filter()[0].name == 'cliente':
-                        return redirect("ClienteRegistrado_Principal")
+                return redirect("Principal")
 
         else:
             messages.error(request,'Usuario o contraseña incorrectos.')
             return redirect('login')
-        
+
         if request.user.groups.filter(name='administradorWeb').exists():
             def homeDoctor(request):
                 return redirect("AdministradorWeb_Principal")
@@ -51,7 +44,7 @@ def index(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('Principal')
 
 
 
@@ -207,29 +200,22 @@ def internauta_Inmuebles(request):
     context = {}
     return render(request, 'internauta/Inmuebles.html',context)
 
-def internauta_Principal(request):
-    usuario = request.user
-    print(usuario.tipo)
-    return render(request, 'internauta/Principal.html',{'tipo': usuario.tipo})
+def Principal(request):
+    return render(request, 'Principal.html')
 
 def internauta_register(request):
-    form = CreateUserForm()
-
     if request.method == 'POST':
-        form= AuthenticationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
-            user=form.save()
-            username = form.cleaned_data.get('username')
+            user = form.save()
             group = Group.objects.get(name='cliente')
             user.groups.add(group)
-            user.objects.create(user=user,nombre=user.username,apellido=user.first_name,email=user.email)
-            messages.success(request, 'la carga ha sido exitosa ' + username)
+            messages.success(request, 'la carga ha sido exitosa ' + user.username)
             return redirect('login')
+    else:
+        form = CreateUserForm()
 
-
-
-    context={'form': form}
-    return render(request,'internauta/register.html',context)
+    return render(request,'internauta/register.html', {'form': form})
 
 
 
