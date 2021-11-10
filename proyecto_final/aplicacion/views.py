@@ -3,8 +3,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.models import Group
 
 from .forms import LoginForm
+from .forms import CreateUserForm
 
 
 def IniciarSesion(request):
@@ -18,18 +20,38 @@ def IniciarSesion(request):
         if usuario is not None:
             if usuario.is_active:
                 login(request, usuario)
-                return redirect("internauta_Principal")
+                if request.user.groups.filter(name='administradorWeb').exists():
+                        return redirect("AdministradorWeb_Principal")
+
+                elif request.user.groups.filter()[0].name == 'Secretario':
+                        return redirect("Secretaria_Principal")
+                elif request.user.groups.filter()[0].name == 'cliente':
+                        return redirect("ClienteRegistrado_Principal")
+
         else:
             messages.error(request,'Usuario o contraseña incorrectos.')
             return redirect('login')
+        
+        if request.user.groups.filter(name='administradorWeb').exists():
+            def homeDoctor(request):
+                return redirect("AdministradorWeb_Principal")
 
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
+
+
+
+
 def index(request):
     context = {}
     return render(request, 'index.html',context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 
 
@@ -186,12 +208,28 @@ def internauta_Inmuebles(request):
     return render(request, 'internauta/Inmuebles.html',context)
 
 def internauta_Principal(request):
-    context = {}
-    return render(request, 'internauta/Principal.html',context)
+    usuario = request.user
+    print(usuario.tipo)
+    return render(request, 'internauta/Principal.html',{'tipo': usuario.tipo})
 
 def internauta_register(request):
-    context = {}
-    return render(request, 'internauta/register.html',context)
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form= AuthenticationForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='cliente')
+            user.groups.add(group)
+            user.objects.create(user=user,nombre=user.username,apellido=user.first_name,email=user.email)
+            messages.success(request, 'la carga ha sido exitosa ' + username)
+            return redirect('login')
+
+
+
+    context={'form': form}
+    return render(request,'internauta/register.html',context)
 
 
 

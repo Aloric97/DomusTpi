@@ -26,9 +26,8 @@
 
     <br><br>
     <!-- Cuerpo --> 
-    {% if request.user.is_authenticated %}
-      <h2>{{request.user}}</h2>
-      <h6>(mensaje de debug en internauta/principal.html)</h6>
+    {% if tipo == "ADMINISTRADOR" %}
+      <h2>este mensaje se muestra solo a los administradores</h2>
     {% endif %}
     <!-- Cuerpo -->
     <div class="container mt-5">

@@ -39,18 +39,24 @@
 
         <!--login-->
 
-        <form action="Principal.html">
+        <form method="POST" action="">
+          {% csrf_token %}
           <div class="mb-4">
             <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" name="email" id="" required>
+            {{form.email}}
+            
           </div>
           <div class="mb-4">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="" required>
+            {{form.username}}
           </div>
           <div class="mb-4">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="password" id="" required>
+            {{form.password1}}
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label"> confirmar Contraseña</label>
+            {{form.password2}}
           </div>
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Registrarse</button>
