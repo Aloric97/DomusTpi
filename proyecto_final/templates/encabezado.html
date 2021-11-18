@@ -1,8 +1,4 @@
 
-
-
-
-
 <!-- Encabezado -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow" style="background-color: #ffc852;">
   <a class="navbar-brand fs-1" href="{% url 'Principal' %}">
@@ -22,19 +18,19 @@
     {% endif %}
 
     {% if user.tipo == "ADMINISTRADOR" %}
-    <div class="dropdown">
-      <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-      data-bs-toggle="dropdown" aria-expanded="false">
-      Tareas
-    </a>
-    <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;"
-    aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item p-2" href="{% url 'AdministradorWeb_agregar_usuario' %}">Añadir
-      Usuario</a></li>
-      <li><a class="dropdown-item p-2" href="{% url 'AdministradorWeb_EliminarUsuario' %}">Eliminar
-        Usuario</a></li>
-      </ul>
-    </div>
+      {% include 'AdministradorWeb/tareas.html' %}
+    {% elif user.tipo == "SECRETARIA" %}
+      {% include 'Secretaria/tareas.html' %}
+    {% elif user.tipo == "CAJERA" %}
+      {% include 'Cajera/tareas.html' %}
+    {% elif user.tipo == "AGENTE_INMOBILIARIO" %}
+      {% include 'agenteInmobiliario/tareas.html' %}
+    {% elif user.tipo == "JE_ADM" %}
+      {% include 'JefaAdministracion/tareas.html' %}
+    {% elif user.tipo == "JE_COMER" %}
+      {% include 'JefaComercializacion/tareas.html' %}
+    {% elif user.tipo == "GERENTE" %}
+      {% include 'GerenteGeneral/tareas.html' %}
     {% endif %}
 
     <a class="nav-link fs-5" aria-current="page" href="{% url 'Principal' %}">Inicio</a>

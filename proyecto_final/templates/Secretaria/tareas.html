@@ -1,0 +1,13 @@
+<!-- Encabezado -->
+<div class="dropdown">
+  <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Tareas
+  </a>
+  <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="{% url 'Secretaria_Solicitudes' %}">Solicitudes</a></li>
+    <li><a class="dropdown-item" href="{% url 'Secretaria_Agenda' %}">Agenda</a></li>
+    <li><a class="dropdown-item" href="{% url 'Secretaria_EditarCita' %}">Editar cita</a></li>
+    <li><a class="dropdown-item" href="{% url 'Secretaria_CancelarCita' %}">Cancelar cita</a></li>
+    <li><a class="dropdown-item" href="{% url 'Secretaria_Clientes' %}">Clientes</a></li>
+  </ul>
+</div>

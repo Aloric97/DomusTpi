@@ -1,0 +1,12 @@
+<!-- TAREAS CAJERA -->
+<div class="dropdown">
+  <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Tareas
+  </a>
+  <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="{% url 'Cajera_Alquileres' %}">Caja de alquileres</a></li>
+    <li><a class="dropdown-item" href="{% url 'Cajera_Ventas' %}">Caja de ventas</a></li>
+    <li><a class="dropdown-item" href="{% url 'Cajera_Cierre' %}">Cierre de caja</a></li>
+    <li><a class="dropdown-item" href="{% url 'Cajera_Transacciones' %}">Movimientos</a></li>
+  </ul>
+</div>

@@ -13,6 +13,7 @@ class User(AbstractUser):
           JE_COMER = "JE_COMER", 'Jefe Comercialización'
           JE_ADM = "JE_ADM", 'Jefe Administración'
           GERENTE = "GERENTE", 'Gerente'
+          AGENTE_INMOBILIARIO = "AGENTE_INMOBILIARIO", 'Agente Inmobiliario'
 
       tipo = models.CharField(_("Tipo"), max_length=50, choices=Tipos.choices, default=Tipos.CLIENTE)
 

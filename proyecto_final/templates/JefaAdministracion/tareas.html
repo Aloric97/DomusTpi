@@ -1,0 +1,13 @@
+
+<!-- Jefe administración tareas -->
+
+<div class="dropdown">
+  <a class="nav-link fs-5 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Tareas
+  </a>
+  <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="{% url 'JefaAdministracion_Transacciones' %}">Movimientos</a></li>
+    <li><a class="dropdown-item" href="{% url 'JefaAdministracion_Reportes' %}">Generar reportes</a></li>
+    <li><a class="dropdown-item" href="{% url 'JefaAdministracion_Clientes' %}">Archivo de clientes</a></li>
+  </ul>
+</div>
