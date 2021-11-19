@@ -19,15 +19,36 @@ def IniciarSesion(request):
         if usuario is not None:
             if usuario.is_active:
                 login(request, usuario)
-                return redirect("Principal")
+                if request.user.groups.filter(name='administradorWeb').exists():
+                        return redirect("AdministradorWeb_Principal")
+                elif request.user.groups.filter(name='cliente').exists():
+                        return redirect("ClienteRegistrado_Principal")
+                elif request.user.groups.filter(name='administracion').exists():
+                        return redirect("JefaAdministracion_Principal")
+                elif request.user.groups.filter(name='cajero').exists():
+                        return redirect("Cajera_Principal")
+                elif request.user.groups.filter(name='comercializacion').exists():
+                        return redirect("JefaComercializacion_Principal")
+                elif request.user.groups.filter(name='gerente').exists():
+                        return redirect("GerenteGeneral_Principal")
+                elif request.user.groups.filter(name='marketing').exists():
+                        return redirect("EmpleadoMarketing_Principal")
+                elif request.user.groups.filter(name='secretario').exists():
+                        return redirect("Secretaria_Principal")
+                elif request.user.groups.filter(name='inmobiliario').exists():
+                        return redirect("agenteInmobiliario_Principal")                               
+
 
         else:
             messages.error(request,'Usuario o contraseña incorrectos.')
             return redirect('login')
 
         if request.user.groups.filter(name='administradorWeb').exists():
-            def homeDoctor(request):
+            def homeAdministrador(request):
                 return redirect("AdministradorWeb_Principal")
+        elif request.user.groups.filter(name='cliente').exists():
+            def homeCliente(request):
+                return redirect("ClienteRegistrado_Principal")
 
     else:
         form = AuthenticationForm()

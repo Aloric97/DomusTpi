@@ -1,0 +1,44 @@
+1)
+USUARIO JEFE ADMINISTRACION:
+usuario:prueba_administracion
+pass:jmk13579
+
+2)
+USUARIO CAJERO:
+usuario:prueba_cajero
+pass:jmk13579
+
+3)
+USUARIO JEFE COMERCIALIZACION:
+usuario:prueba_comercializacion
+pass:jmk13579
+
+4)
+USUARIO GERENTE:
+usuario:prueba_gerente
+pass:jmk13579
+
+5)
+USUARIO MARKETING:
+usuario:prueba_marketing
+pass:jmk13579
+
+6)
+USUARIO CLIENTE:
+usuario:prueba_cliente
+pass:jmk13579
+
+7)
+USUARIO ADMINISTRADOR WEB:
+usuario:prueba_administradorweb
+pass:jmk13579
+
+8)
+USUARIO SECRETARIO:
+usuario:prueba_secretario
+pass:jmk13579
+
+9)
+USUARIO INMOBILIARIO
+usuario:prueba_inmobiliario
+pass:jmk13579
