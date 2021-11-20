@@ -4,9 +4,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.models import Group
+from datetime import datetime
 
-from .forms import LoginForm
-from .forms import CreateUserForm
+from .forms import LoginForm, CreateUserForm, ProgramarCitaForm
+from .models import Turno, Cliente, Agente
+
 
 
 def IniciarSesion(request):
@@ -305,7 +307,75 @@ def Secretaria_AceptarSolicitud(request):
 
 def Secretaria_Agenda(request):
     context = {}
-    return render(request, 'Secretaria/Agenda.html',context)
+
+    proximos_turnos = Turno.getProximosTurnos(1)
+    context.setdefault("proximos_turnos", proximos_turnos)
+    email_buscado = request.GET.get('email-buscar')
+    telefono_buscado = request.GET.get('numero-buscar')
+    fecha_buscada = str(request.GET.get('fecha-buscar')).replace('-', "")
+
+    if email_buscado != '' and email_buscado is not None:
+        try:
+            cliente = Cliente.objects.get(email__iexact=email_buscado)
+            context.setdefault("cliente", cliente)
+            request.session['cliente'] = cliente.id
+            context.setdefault("url", request.get_full_path())
+        except:
+            context.setdefault("cliente", "")
+
+    if fecha_buscada != "None":
+        if request.session['cliente']:
+            cliente = Cliente.objects.get(pk=request.session['cliente'])
+            context.setdefault("cliente", cliente)
+        turnos_disponibles = Turno.getHorariosDisponibles(fecha_buscada)
+        context.setdefault("turnos_disponibles", turnos_disponibles)
+        context.setdefault("fecha_buscada", request.GET.get('fecha-buscar'))
+
+    return render(request, 'Secretaria/Agenda.html', context)
+
+
+def esFechaValida(fecha):
+    fecha_hoy = int(str(datetime.today().strftime('%Y-%m-%d')).replace("-", ""))
+    fecha = int(fecha.replace("/", ""))
+    print(fecha_hoy, fecha, fecha_hoy > fecha)
+    return fecha_hoy < fecha
+
+
+def ProgramarCita(request):
+    cliente = Cliente.objects.get(pk=request.session['cliente'])
+    fecha_buscada = request.GET.get('fecha-buscar')
+
+    proximos_turnos = Turno.getProximosTurnos(5)
+    turnos_disponibles = []
+    if fecha_buscada != "None":
+        fecha = str(fecha_buscada).replace('-', "")
+        turnos_disponibles = Turno.getHorariosDisponibles(fecha)
+
+    if request.method == "POST":
+        form = ProgramarCitaForm(request.POST)
+        fecha = request.POST['dia']
+        hora = request.POST['hora']
+        agente = request.POST['agente']
+        if form.is_valid() and Turno.estaDisponible(fecha, hora, agente) and esFechaValida(fecha):
+            form.save()
+            return redirect('Secretaria_Agenda')
+        elif not esFechaValida(fecha):
+            messages.error(request, "La fecha ingresada es menor a la actual.")
+        elif not Turno.estaDisponible(fecha, hora, agente):
+            messages.error(request, "Ese turno ya fue asignado.")
+        else:
+            messages.error(request, "Se produjo un error y no se completó la carga.")
+    else:
+
+        form = ProgramarCitaForm(initial={"cliente":cliente})
+    return render(request, 'Secretaria/programar_cita.html', {'form': form, 'cliente':cliente, 'turnos_disponibles': turnos_disponibles, 'proximos_turnos': proximos_turnos, 'fecha_buscada': fecha_buscada})
+
+
+def TurnosDados(request):
+    context={}
+    fecha_buscada = request.GET.get('fecha-buscar')
+    context.setdefault("turnos", Turno.getTurnosDados(fecha_buscada))
+    return render(request, 'Secretaria/turnosDados.html', context)
 
 def Secretaria_CancelarCita(request):
     context = {}
