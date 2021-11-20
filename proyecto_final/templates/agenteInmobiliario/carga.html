@@ -20,10 +20,10 @@
 
 <body>
  <!-- Encabezado -->
- {% include 'agenteInmobiliario/encabezado.html' %}
+ {% include 'encabezado.html' %}
 
  <br><br>
- <!-- Cuerpo --> 
+ <!-- Cuerpo -->
   <div class="container">
      <h1 class="primary" id="ButtonAgendah1">Cargar propiedad</h1>
      <form class="needs-validation">
@@ -31,19 +31,19 @@
              <label class="form-label" for="tipo" name="tipo" required>Seleccionar el tipo de la propiedad: </label>
              <select name="tipo">
                  <!-- TODO pasar a javascript -->
-            
+
                  <option value="DEPARTAMENTO">DEPARTAMENTO</option>
-            
+
                  <option value="CASA">CASA</option>
-            
+
                  <option value="CHALET">CHALET</option>
-            
+
                  <option value="LOCAL">LOCAL</option>
-            
+
                  <option value="CASA_CON_LOCAL">CASA_CON_LOCAL</option>
-            
+
                  <option value="CABANA">CABANA</option>
-            
+
                  <option value="COCHERA">COCHERA</option>
              </select>
              <div class="valid-feedback">
@@ -57,13 +57,13 @@
                  <input class="form-control" list="pais" name="pais" class="form-control" required id="pais">
                  <datalist id="pais">
 
-                
+
                      <option value="Argentina">Argentina</option>
-                
+
                      <option value="Uruguay">Uruguay</option>
-                
+
                      <option value="Otros">Otros</option>
-                
+
 
                  </datalist>
                  <div class="valid-feedback">
@@ -146,11 +146,11 @@
          <label class="form-label" name="propietario">Propietario: </label>
          <input class="form-control" list="propietarios" name="propietario">
          <datalist id="propietarios">
-        
+
              <option value="Juan Perez">Juan Perez</option>
-        
+
              <option value="Nuevo">Nuevo</option>
-        
+
          </datalist>
 
          <h4>Contrato</h4>
@@ -158,11 +158,11 @@
              <div class="form-group col-6">
                  <label class="form-label" for="contrato">Seleccione el tipo de contrato:</label>
                  <select name="contrato">
-                
+
                      <option value="Alquiler">Alquiler</option>
-                
+
                      <option value="Venta">Venta</option>
-                
+
                  </select>
              </div>
              <div class="form-group col-6">
@@ -211,7 +211,7 @@
      <br><br><br>
   <!--Pie de Página-->
   {% include 'pie_pagina.html' %}
-  
+
 
  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"

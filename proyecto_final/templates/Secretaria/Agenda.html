@@ -10,141 +10,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    <!--ESTILOS CSS-->
- 
    <link rel="stylesheet" type="text/css" href="{% static 'css/headerYfooter/estilos.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'css/General/Inputs/entradas.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'css/Secretaria/Estilos.css' %}">
     <title>Agenda</title>
   </head>
-  
+
 
   <body>
     <!-- Encabezado -->
-    {% include 'Secretaria/encabezado.html' %}
+    {% include 'encabezado.html' %}
 
     <br><br>
-    <!-- Cuerpo --> 
+    <!-- Cuerpo -->
     <div class="container">
-      <div class="row">
-        <!--Calendario-->
-        <div class="col text-center">
-          <label for="Fecha">Fecha: </label>
-          <input type="date" placeholder="DD/MM/AAAA" id="entrada">
-      </div>
-      </div>
-      <br>
-      <div class="row">
-        <!--Tabla-->
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Hora</th>
-                <th scope="col">Nro Cliente</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Lugar</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Agente</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!--Fila 1-->
-              <tr>
-                <th scope="row"></th>
-                <td>Cita</td>
-                <td>10:00</td>
-                <td>0158</td>
-                <td>Pepe Argento</td>
-                <td>Jose Hernandez 758</td>
-                <td>0362-123789</td>
-                <td>Pendiente</td>
-                <td>Agente 1</td>
-              </tr>
-              <!--Fila 2--> <!--
-              <tr>
-                <th scope="row"></th>
-                <td>Cita</td>
-                <td>10:00</td>
-                <td>0158</td>
-                <td>Pepe Argento</td>
-                <td>Jose Hernandez 758</td>
-                <td>0362-123789</td>
-                <td>Pendiente</td>
-                <td>Agente 1</td>
-              </tr> -->
-              <!--Fila 3--> <!--
-              <tr>
-                <th scope="row"></th>
-                <td>Cita</td>
-                <td>10:00</td>
-                <td>0158</td>
-                <td>Pepe Argento</td>
-                <td>Jose Hernandez 758</td>
-                <td>0362-123789</td>
-                <td>Pendiente</td>
-                <td>Agente 1</td>
-              </tr>
-              -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <hr id="separador">
-      <div class="row"> <!--Agregar una cita-->
-        <div class="col text-center">
-          <a href="#Citas" class="btn" id="botonE">Agendar cita</a>
-        </div>
-      </div>
-      <hr id="separador">
       <div class="row" id="Citas">
         <h1 class="text-center">Agendar una cita</h1>
         <div class="accordion" id="accordion">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button" id="tabla" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Nuevo cliente
+                Buscar cliente
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body"> <!--Datos del cliente nuevo-->
-                <form class="row g-3" action="#horarios">
+                <form class="row" action="{% url 'Secretaria_Agenda'%}#busqNumero" method="GET">
                   <div class="row mt-3 text-center">
-                    <label for="validationServer01" class="form-label col-lg-2">Nombre del cliente</label>
-                    <input type="text" class="form-control form-control-sm col" id="entrada" placeholder="Nombre" required>
-                  
-                    <label for="validationServer01" class="form-label col-lg-2">Teléfono del cliente</label>
-                    <input type="number" class="form-control form-control-sm col" id="entrada" placeholder="Teléfono" required>
-                  
                     <label for="validationServer01" class="form-label col-lg-2">Email del cliente</label>
-                    <input type="email" class="form-control form-control-sm col" id="entrada" placeholder="Email" required>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col text-center">
-                      <button class="btn" id="botonE" type="submit">Guardar</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item"> <!--Cliente registrado-->
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" id="tabla" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Cliente cargado
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body"> <!--Datos cliente-->
-                <form class="row" action="#resultBusqueda">
-                  <div class="row mt-3 text-center">
-                    <label for="validationServer01" class="form-label col-lg-2">Nombre del cliente</label>
-                    <input type="text" class="form-control form-control-sm col" id="entrada" placeholder="Nombre" required>
-                  
-                    <label for="validationServer01" class="form-label col-lg-2">Apellido del cliente</label>
-                    <input type="text" class="form-control form-control-sm col" id="entrada" placeholder="Apellido" required>
+                    <input type="text" class="form-control form-control-sm col" name="email-buscar"  id="entrada" placeholder="Email" required>
                   </div>
                   <div class="row mt-3">
                     <div class="col text-center">
@@ -153,10 +47,10 @@
                   </div>
                 </form>
                 <hr id="separador">
-                <form class="row" action="#resultBusqueda">
+                <form class="row" action="{% url 'Secretaria_Agenda'%}#busqNumero">
                   <div class="row mt-3">
-                    <label for="validationServer01" class="form-label col-lg-2">Número del cliente</label>
-                    <input type="number" class="form-control form-control-sm col" id="entrada" placeholder="Número" required>
+                    <label for="validationServer01" id="busqNumero" class="form-label col-lg-2">Número del cliente</label>
+                    <input type="number" class="form-control form-control-sm col" name="numero-buscar" id="entrada" placeholder="Número" required>
                   </div>
                   <div class="row mt-3">
                     <div class="col text-center">
@@ -168,24 +62,68 @@
                 <div class="row" id="resultBusqueda">
                   <h1 class="text-center">Datos encontrados</h1>
                   <div class="col-sm">
-                    <h6>Apellido y Nombre</h6>
-                    <h6>DNI:</h6>
-                    <H6>CUIL:</H6>
+                    <h6>Apellido: {{cliente.last_name}}</h6>
+                    <h6>Nombre:{{cliente.first_name}}</h6>
                   </div>
                   <div class="col-sm">
-                    <h6>Fecha de nacimiento:</h6>
-                    <h6>Teléfono:</h6>
-                    <H6>Email:</H6>
-                  </div>
-                  <div class="col-sm">
-                    <h6>Documentos:</h6>
+                    <H6>Email: {{cliente.email}}</H6>
+                    <H6>ID de cliente: {{cliente.pk}}</H6>
                   </div>
                 </div>
                 <div class="row mt-3">
                   <div class="col text-center">
-                    <a href="#horarios" class="btn" id="botonE">Continuar</a>
+                    {% if cliente.email %}
+                      <a href="{%  url 'programar_cita' %}" class="btn" id="botonE">Continuar</a>
+                    {% else %}
+                      <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';"></span>
+                        Por favor, primero busque el cliente por email o número de teléfono y luego haga click en continuar.
+                        <hr>
+                        <a class="btn" id="botonE" disabled>Continuar</a>
+                      </div>
+                    {% endif %}
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item"> <!--Cliente registrado-->
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" id="tabla" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Registrar Cliente
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body"> <!--Datos cliente-->
+                <form class="row g-3" action="#horarios">
+                  <div class="row mt-3 text-center">
+                    <label for="validationServer01" class="form-label col-lg-2">Nombre del cliente</label>
+                    <input type="text" class="form-control form-control-sm col" id="entrada" placeholder="Nombre" required>
+
+                    <label for="validationServer01" class="form-label col-lg-2">Teléfono del cliente</label>
+                    <input type="number" class="form-control form-control-sm col" id="entrada" placeholder="Teléfono" required>
+
+                    <label for="validationServer01" class="form-label col-lg-2">Email del cliente</label>
+                    <input type="email" class="form-control form-control-sm col" id="entrada" placeholder="Email" required>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col text-center">
+                      <button class="btn" id="botonE" type="submit">Guardar</button>
+                    </div>
+                  </div>
+                </form>
+                <hr id="separador">
+                <form class="row" action="">
+                  <div class="row mt-3">
+                    <label for="validationServer01" class="form-label col-lg-2">Número del cliente</label>
+                    <input type="number" class="form-control form-control-sm col" name="numero-buscar" id="entrada" placeholder="Número" required>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col text-center">
+                      <button class="btn" id="botonE" type="submit">Buscar</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -193,64 +131,69 @@
       </div>
       <hr id="separador">
       <h1 class="text-center" id="horarios">Horarios disponibles</h1>
-      <div class="row mt-3 text-center">
-        <div class="col">
-          <label for="Fecha">Fecha: </label>
-          <input type="date" placeholder="DD/MM/AAAA" id="entrada">
-      </div>
-    </div>
+          <form class="row" action="{% url 'Secretaria_Agenda' %}#horarios">
+            <div class="row mt-3 text-center">
+              <div class="col">
+                <label for="Fecha">Fecha: </label>
+                <input type="date" name="fecha-buscar" placeholder="dd/mm/aaaa" id="entrada">
+                <hr>
+                <button class="btn" id="botonE" type="submit">Buscar</button>
+              </div>
+            </div>
+          </form>
     <div class="row mt-3">
     <!--Tabla-->
     <div class="table-responsive">
         <table class="table">
             <thead id="tabla">
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
-                    <th scope="col">Agente disponible</th>
-                    <th scope="col"></th>
+                    <th scope="col">Agentes disponibles</th>
                 </tr>
             </thead>
             <tbody>
-                <!--Fila 1-->
-                <tr>
-                    <th scope="row"></th>
-                    <td>10:00</td>
-                    <td>Agente 1</td>
+              <form class="" action="" method="POST">
+                {% if turnos_disponibles %}
+                  {% for dia, agentes in turnos_disponibles.items %}
+                  <tr>
+                    <td>{{fecha_buscada}}</td>
+                    <td>{{dia}}</td>
                     <td>
-                        <a href="{% url 'Secretaria_Principal' %}" type="submit" class="btn" id="botonE" onclick="Alerta()">Agregar cita</a>
+                      {% for agente in agentes %}
+                      {{agente.first_name}}<br>
+                      {% endfor %}
                     </td>
-                </tr>
-                <!--Fila 2-->
-                <tr>
-                    <th scope="row"></th>
-                    <td>10:00</td>
-                    <td>Agente 2</td>
-                    <td>
-                        <a href="{% url 'Secretaria_Principal' %}" type="submit" class="btn" id="botonE" onclick="Alerta()">Agregar cita</a>
-                    </td>
-                </tr>
-                <!--Fila 3-->
-                <tr>
-                    <th scope="row"></th>
-                    <td>10:30</td>
-                    <td>Agente 3</td>
-                    <td>
-                        <a href="{% url 'Secretaria_Principal' %}" type="submit" class="btn" id="botonE" onclick="Alerta()">Agregar cita</a>
-                    </td>
-                </tr>
+                  </tr>
+                  {% endfor %}
+                {% else %}
+                  {% for dia, horarios in proximos_turnos.items %}
+                    {% for hora in horarios.items %}
+                    <tr>
+                      <td>{{dia|slice:"6:8"}}-{{dia|slice:"4:6"}}-{{dia|slice:":4"}}</td>
+                      <td>{{hora.0}}</td>
+                      <td>
+                        {% for agente in hora.1 %}
+                        {{agente.first_name}}<br>
+                        {% endfor %}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              </form>
             </tbody>
         </table>
         </div>
       </div>
     </div>
-    
-  
+
+
     <br><br><br>
     <!--Pie de Página-->
     {% include 'pie_pagina.html' %}
-  
-  
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="{% static 'css/bootstrap/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -260,5 +203,5 @@
       }
      </script>
   </body>
-  
+
 </html>

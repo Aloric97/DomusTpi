@@ -102,7 +102,6 @@ urlpatterns = [
     path('Secretaria/Editar',views.Secretaria_Editar, name='Secretaria_Editar'),
     path('Secretaria/EditarCita',views.Secretaria_EditarCita, name='Secretaria_EditarCita'),
     path('Secretaria/Inmuebles',views.Secretaria_Inmuebles, name='Secretaria_Inmuebles'),
-    path('Secretaria/Principal',views.Secretaria_Principal, name='Secretaria_Principal'),
     path('Secretaria/Solicitudes',views.Secretaria_Solicitudes, name='Secretaria_Solicitudes'),
 
 ]
