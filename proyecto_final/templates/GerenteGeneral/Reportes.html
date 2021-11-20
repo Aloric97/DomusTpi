@@ -19,7 +19,8 @@
 
   <body>
      <!-- Encabezado -->
-     {% include 'GerenteGeneral/encabezado.html' %}
+     {% include 'encabezado.html' %}
+
 
      <br><br>
      <!-- Cuerpo --> 
@@ -41,7 +42,7 @@
                   Usuario
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="{% url 'internauta_Principal' %}">Salir</a></li>
+                  <li><a class="dropdown-item" href="{% url 'Principal' %}">Salir</a></li>
                 </ul>
               </div>
             </li>
