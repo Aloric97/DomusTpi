@@ -12,6 +12,12 @@ class LoginForm(forms.Form):
 class CreateUserForm(UserCreationForm):
     # UserCreationForm predeterminado proporciona username, password1 y password2.
     # Incluyendo from django.contrib.auth import User se pueden agregar más campos.
+    def __init__(self, *args, **kwargs):
+          super().__init__(*args, **kwargs)
+          self.fields['password1'].label = ''
+          self.fields['password2'].label = ''
+          self.fields['password1'].help_text = ''
+          self.fields['password2'].help_text = ''
 
     class Meta:
         model = User
@@ -20,9 +26,19 @@ class CreateUserForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
-            'password1',
-            'password2',
         ]
+        labels = {
+            'username': '',
+            'first_name': '',
+            'last_name': '',
+            'email': '',
+        }
+        help_texts = {
+            'username': None,
+            'first_name': None,
+            'last_name': None,
+            'email': None,
+        }
 
 class ProgramarCitaForm(forms.ModelForm):
 
@@ -30,3 +46,10 @@ class ProgramarCitaForm(forms.ModelForm):
         model = Turno
         fields = ['cliente', 'agente', 'dia', 'hora']
         widgets = {'cliente': forms.HiddenInput()}
+
+        labels = {
+            'username': '',
+            'agente': '',
+            'dia': '',
+            'hora': '',
+        }

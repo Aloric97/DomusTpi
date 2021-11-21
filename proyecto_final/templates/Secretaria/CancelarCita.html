@@ -28,8 +28,8 @@
             <h1>Usted está por eliminar la cita <strong>{{cita}}</strong></h1>
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit" class="btn btn-danger btn-lg ml-3 mt-3" onclick="Alerta()" name="button">Eliminar</button>
-            <a class="btn btn-primary btn-lg ml-3 mt-3" href="{% url 'turnos_dados' %}">Cancelar</a>
+            <button type="submit" id="botonE" class="btn btn-danger btn-lg ml-3 mt-3" onclick="Alerta()" name="button">Eliminar</button>
+            <a class="btn btn-primary btn-lg ml-3 mt-3"  href="{% url 'turnos_dados' %}">Cancelar</a>
           </form>
       </div>
     </div>

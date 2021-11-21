@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,11 +35,20 @@
         <h2 class="fw-bold text-center py-5">Iniciar Sesión</h2>
 
         <!--login-->
+        {% if messages %}
+          {% for message in messages %}
+          <div class="text-center alert alert-{{ message.tags }} mx-auto mt-1" style="width: 350px;">
+            {{message}}
+            <a class="btn-close" style="margin-left:10px;padding-left:10px" href="" data-dismiss="alert"></a>
+          </div>
+          {% endfor %}
+        {% endif %}
 
         <form method="POST">
           {% csrf_token %}
-          <p>Usuario:   {{form.username}}</p>
-          <p>Contraseña: {{form.password}}</p>
+          <p>{{form.username|as_crispy_field}}</p>
+          <p>{{form.password|as_crispy_field}}</p>
+
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
           </div>

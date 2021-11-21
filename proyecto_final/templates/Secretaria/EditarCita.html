@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     {% load static %}
+    {% load crispy_forms_tags %}
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,15 +28,21 @@
     <!-- Encabezado -->
     {% include 'encabezado.html' %}
     <!-- Cuerpo -->
-    <div class="container">
-      <br><br>
-      <div class="row text-center">
+    <div class="container col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded-start">
+      <br>
+      <div class="text-center">
+        <h1>Modificar cita de cliente: <strong>{{cita.cliente.first_name}} {{cita.cliente.last_name}}</strong></h1>
+      </div>
+      <div class="row">
           <form action="{% url 'editar_cita' cita.id %}" method="POST">
-            <h1>Modificar cita de cliente: <strong>{{cita.cliente.first_name}} {{cita.cliente.last_name}}</strong></h1>
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-danger btn-lg ml-3 mt-3" name="button">Confirmar</button>
-            <a class="btn btn-primary btn-lg ml-3 mt-3" href="{% url 'turnos_dados' %}">Cancelar</a>
+              <p>Agente: {{ form.agente|as_crispy_field }}</p>
+              <p>Día: {{ form.dia|as_crispy_field }}</p>
+              <p>Hora: {{ form.hora|as_crispy_field }}</p>
+              <div class="text-center">
+                <button type="submit" id="botonE" class="btn btn-danger btn-lg ml-3 mt-3" name="button">Confirmar</button>
+                <a class="btn btn-primary btn-lg ml-3 mt-3" href="{% url 'turnos_dados' %}">Cancelar</a>
+              </div>
           </form>
           {% for message in messages %}
           <div class="alert alert-danger mx-auto mt-3" style="width: 350px;" role="alert">

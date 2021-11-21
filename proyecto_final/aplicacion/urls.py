@@ -8,5 +8,4 @@ urlpatterns = [
     path("cancelar_cita/<int:cita>", CancelarCita, name="cancelar_cita"),
     path("editar_cita/<int:cita>", EditarCita, name="editar_cita"),
     path('agenda', Secretaria_Agenda, name='secretaria_agenda'),
-
 ]
