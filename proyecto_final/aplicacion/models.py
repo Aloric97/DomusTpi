@@ -182,10 +182,10 @@ class Turno(models.Model):
     hora = models.CharField(max_length=20, choices=TURNOS_HORARIOS)
 
 
-    def getTurnosDados(fecha=None):
+    def getTurnosDados(fecha="all"):
         turnos_ordenados = Turno.objects.order_by('dia', 'hora')
         turnos_dados = []
-        if fecha != " 5" and fecha != "":
+        if fecha != "all":
             for turno in turnos_ordenados:
                 if turno.dia.replace("/", "") == str(fecha).replace("-", ""):
                     turnos_dados.append(turno)

@@ -19,6 +19,8 @@
   <body>
     {% include 'encabezado.html' %}
       <br><br>
+    <div class="container">
+
       <div class="row">
         <!--Calendario-->
         <form class="row" method="GET" action="">
@@ -33,21 +35,21 @@
           </div>
         </form>
       </div>
-      <br>
-      <div class="row">
+      <div class="row mt-4">
         <!--Tabla-->
         <div class="table-responsive">
           <table class="table">
-            <thead>
+            <thead id="tabla">
               <tr>
                 <th scope="col"></th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Hora</th>
-                <th scope="col">Tipo</th>
+                <th scope="col">ID Cita</th>
                 <th scope="col">Nro Cliente</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Agente</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -57,21 +59,27 @@
                   <th scope="row"></th>
                   <td>{{turno.dia}}</td>
                   <td>{{turno.hora}}</td>
-                  <td>Cita</td>
+                  <td>{{turno.id}}</td>
                   <td>{{turno.cliente.id}}</td>
                   <td>{{turno.cliente.first_name}} {{turno.cliente.last_name}}</td>
                   <td>Pendiente</td>
                   <td>{{turno.agente.first_name}}</td>
+                  <td>
+                      <a href="{% url 'cancelar_cita' turno.id %}" class="btn" id="botonE">Cancelar</a>
+                  </td>
                 </tr>
               {% endfor %}
-              <!--Fila 2-->
-
             </tbody>
           </table>
         </div>
       </div>
-      <hr id="separador">
-      {% include 'pie_pagina.html' %}
-    </body>
+    </div>
 
+      <br><br><br>
+      {% include 'pie_pagina.html' %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="{% static 'css/bootstrap/js/jquery-3.6.0.min.js' %}"></script>
+      <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    </body>
   </html>

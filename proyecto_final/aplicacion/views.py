@@ -38,9 +38,7 @@ def IniciarSesion(request):
                 elif request.user.groups.filter(name='secretario').exists():
                         return redirect("Secretaria_Principal")
                 elif request.user.groups.filter(name='inmobiliario').exists():
-                        return redirect("agenteInmobiliario_Principal")                               
-
-
+                        return redirect("agenteInmobiliario_Principal")
         else:
             messages.error(request,'Usuario o contraseña incorrectos.')
             return redirect('login')
@@ -51,7 +49,6 @@ def IniciarSesion(request):
         elif request.user.groups.filter(name='cliente').exists():
             def homeCliente(request):
                 return redirect("ClienteRegistrado_Principal")
-
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
@@ -68,7 +65,6 @@ def index(request):
 def logoutUser(request):
     logout(request)
     return redirect('Principal')
-
 
 
 def AdministradorWeb_AddUser(request):
@@ -395,12 +391,19 @@ def ProgramarCita(request):
 def TurnosDados(request):
     context={}
     fecha_buscada = request.GET.get('fecha-buscar')
-    context.setdefault("turnos", Turno.getTurnosDados(fecha_buscada))
+    if fecha_buscada:
+        context.setdefault("turnos", Turno.getTurnosDados(fecha_buscada))
+    else:
+        context.setdefault("turnos", Turno.getTurnosDados())
     return render(request, 'Secretaria/turnosDados.html', context)
 
-def Secretaria_CancelarCita(request):
-    context = {}
-    return render(request, 'Secretaria/CancelarCita.html',context)
+def CancelarCita(request, cita):
+    cita = Turno.objects.get(id=cita)
+    if request.method == "POST":
+        cita.delete()
+        return redirect('turnos_dados')
+
+    return render(request, 'Secretaria/CancelarCita.html', {"cita":cita})
 
 def Secretaria_Clientes(request):
     context = {}
