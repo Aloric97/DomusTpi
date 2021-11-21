@@ -35,7 +35,7 @@ def IniciarSesion(request):
                         return redirect("GerenteGeneral_Principal")
                 elif request.user.groups.filter(name='marketing').exists():
                         return redirect("EmpleadoMarketing_Principal")
-                elif request.user.groups.filter(name='secretario').exists():
+                elif request.user.groups.filter(name='Secretario').exists():
                         return redirect("Secretaria_Principal")
                 elif request.user.groups.filter(name='inmobiliario').exists():
                         return redirect("agenteInmobiliario_Principal")
