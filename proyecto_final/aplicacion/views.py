@@ -354,9 +354,8 @@ def Secretaria_Agenda(request):
 def esFechaValida(fecha):
     fecha_hoy = int(str(datetime.today().strftime('%Y-%m-%d')).replace("-", ""))
     fecha = int(fecha.replace("/", ""))
-    print(fecha_hoy, fecha, fecha_hoy > fecha)
-    return fecha_hoy < fecha
-
+    print(fecha_hoy <= fecha)
+    return fecha_hoy <= fecha
 
 def ProgramarCita(request):
     cliente = Cliente.objects.get(pk=request.session['cliente'])
@@ -375,7 +374,8 @@ def ProgramarCita(request):
         agente = request.POST['agente']
         if form.is_valid() and Turno.estaDisponible(fecha, hora, agente) and esFechaValida(fecha):
             form.save()
-            return redirect('Secretaria_Agenda')
+            messages.success(request, 'Cita agendada exitosamente.')
+            return redirect('turnos_dados')
         elif not esFechaValida(fecha):
             messages.error(request, "La fecha ingresada es menor a la actual.")
         elif not Turno.estaDisponible(fecha, hora, agente):
@@ -383,9 +383,29 @@ def ProgramarCita(request):
         else:
             messages.error(request, "Se produjo un error y no se completó la carga.")
     else:
-
         form = ProgramarCitaForm(initial={"cliente":cliente})
     return render(request, 'Secretaria/programar_cita.html', {'form': form, 'cliente':cliente, 'turnos_disponibles': turnos_disponibles, 'proximos_turnos': proximos_turnos, 'fecha_buscada': fecha_buscada})
+
+
+def EditarCita(request, cita):
+    cita = Turno.objects.get(id=cita)
+    form = ProgramarCitaForm(instance=cita)
+    if request.method == "POST":
+        form = ProgramarCitaForm(request.POST, instance=cita)
+        fecha = request.POST['dia']
+        hora = request.POST['hora']
+        agente = request.POST['agente']
+        if form.is_valid() and Turno.estaDisponible(fecha, hora, agente) and esFechaValida(fecha):
+            form.save()
+            messages.success(request, 'Cita modificada exitosamente.')
+            return redirect('turnos_dados')
+        elif not esFechaValida(fecha):
+            messages.error(request, "La fecha ingresada es menor a la actual.")
+        elif not Turno.estaDisponible(fecha, hora, agente):
+            messages.error(request, "Ese turno ya fue asignado.")
+        else:
+            messages.error(request, "Se produjo un error y no se completó la carga.")
+    return render(request, 'Secretaria/EditarCita.html', {"form":form, "cita":cita})
 
 
 def TurnosDados(request):
@@ -401,8 +421,8 @@ def CancelarCita(request, cita):
     cita = Turno.objects.get(id=cita)
     if request.method == "POST":
         cita.delete()
+        messages.info(request, "Cita eliminada.")
         return redirect('turnos_dados')
-
     return render(request, 'Secretaria/CancelarCita.html', {"cita":cita})
 
 def Secretaria_Clientes(request):
