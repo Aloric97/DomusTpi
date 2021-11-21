@@ -32,7 +32,7 @@
           <form action="{% url 'editar_cita' cita.id %}" method="POST">
             <h1>Modificar cita de cliente: <strong>{{cita.cliente.first_name}} {{cita.cliente.last_name}}</strong></h1>
             {% csrf_token %}
-            {{form.as_p}}
+            {{ form.as_p }}
             <button type="submit" class="btn btn-danger btn-lg ml-3 mt-3" name="button">Confirmar</button>
             <a class="btn btn-primary btn-lg ml-3 mt-3" href="{% url 'turnos_dados' %}">Cancelar</a>
           </form>
@@ -40,7 +40,7 @@
           <div class="alert alert-danger mx-auto mt-3" style="width: 350px;" role="alert">
             <div class="text-center">
               {{ message }}
-              <a class="close" href="" data-dismiss="alert">×</a>
+              <a class="btn-close" style="margin-left:10px;padding-left:10px" href="" data-dismiss="alert"></a>
             </div>
           </div>
           {% endfor %}

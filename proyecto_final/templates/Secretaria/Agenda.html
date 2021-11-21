@@ -29,13 +29,17 @@
         <div class="accordion" id="accordion">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" id="tabla" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {% if cliente.id %}
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" id="tabla" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">              
+              {% else %}
+              <button class="accordion-button collapsed" id="tabla" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              {% endif %}
                 Buscar cliente
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body"> <!--Datos del cliente nuevo-->
-                <form class="row" action="{% url 'Secretaria_Agenda'%}#busqNumero" method="GET">
+                <form class="row" action="{% url 'secretaria_agenda'%}#busqNumero" method="GET">
                   <div class="row mt-3 text-center">
                     <label for="validationServer01" class="form-label col-lg-2">Email del cliente</label>
                     <input type="text" class="form-control form-control-sm col" name="email-buscar"  id="entrada" placeholder="Email" required>
@@ -47,7 +51,7 @@
                   </div>
                 </form>
                 <hr id="separador">
-                <form class="row" action="{% url 'Secretaria_Agenda'%}#busqNumero">
+                <form class="row" action="{% url 'secretaria_agenda'%}#busqNumero">
                   <div class="row mt-3">
                     <label for="validationServer01" id="busqNumero" class="form-label col-lg-2">Número del cliente</label>
                     <input type="number" class="form-control form-control-sm col" name="numero-buscar" id="entrada" placeholder="Número" required>
@@ -59,6 +63,7 @@
                   </div>
                 </form>
                 <hr id="separador">
+                {% if cliente %}
                 <div class="row" id="resultBusqueda">
                   <h1 class="text-center">Datos encontrados</h1>
                   <div class="col-sm">
@@ -72,18 +77,10 @@
                 </div>
                 <div class="row mt-3">
                   <div class="col text-center">
-                    {% if cliente.email %}
-                      <a href="{%  url 'programar_cita' %}" class="btn" id="botonE">Continuar</a>
-                    {% else %}
-                      <div class="alert">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';"></span>
-                        Por favor, primero busque el cliente por email o número de teléfono y luego haga click en continuar.
-                        <hr>
-                        <a class="btn" id="botonE" disabled>Continuar</a>
-                      </div>
-                    {% endif %}
+                      <a href="{%  url 'programar_cita' cliente.id %}" class="btn" id="botonE">Continuar</a>
                   </div>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -131,7 +128,7 @@
       </div>
       <hr id="separador">
       <h1 class="text-center" id="horarios">Horarios disponibles</h1>
-          <form class="row" action="{% url 'Secretaria_Agenda' %}#horarios">
+          <form class="row" action="{% url 'secretaria_agenda' %}#horarios">
             <div class="row mt-3 text-center">
               <div class="col">
                 <label for="Fecha">Fecha: </label>
@@ -157,7 +154,7 @@
                 {% if turnos_disponibles %}
                   {% for dia, agentes in turnos_disponibles.items %}
                   <tr>
-                    <td>{{fecha_buscada}}</td>
+                    <td>{{fecha}}</td>
                     <td>{{dia}}</td>
                     <td>
                       {% for agente in agentes %}
@@ -165,20 +162,6 @@
                       {% endfor %}
                     </td>
                   </tr>
-                  {% endfor %}
-                {% else %}
-                  {% for dia, horarios in proximos_turnos.items %}
-                    {% for hora in horarios.items %}
-                    <tr>
-                      <td>{{dia|slice:"6:8"}}-{{dia|slice:"4:6"}}-{{dia|slice:":4"}}</td>
-                      <td>{{hora.0}}</td>
-                      <td>
-                        {% for agente in hora.1 %}
-                        {{agente.first_name}}<br>
-                        {% endfor %}
-                      </td>
-                    </tr>
-                    {% endfor %}
                   {% endfor %}
                 {% endif %}
               </form>

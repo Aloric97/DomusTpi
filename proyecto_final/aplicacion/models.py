@@ -156,6 +156,7 @@ class Agente(User):
 
     class Meta:
         proxy = True
+
     def __str__(self):
         return f"{self.first_name} {self.last_name} - ID: {self.pk}"
 
@@ -180,7 +181,6 @@ class Turno(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="cliente_turno")
     dia = models.CharField(max_length=255)
     hora = models.CharField(max_length=20, choices=TURNOS_HORARIOS)
-
 
     def getTurnosDados(fecha="all"):
         turnos_ordenados = Turno.objects.order_by('dia', 'hora')
@@ -208,17 +208,10 @@ class Turno(models.Model):
 
     def getHorariosDisponibles(fecha):
         horarios_disponibles = {}
+        fecha = str(fecha).replace('-', "")
         for horario in Turno.TURNOS_HORARIOS:
             horarios_disponibles.setdefault(horario[0], Turno.getAgentesDisponibles(fecha, horario[0]))
         return horarios_disponibles
-
-    def getProximosTurnos(cantidad):
-        proximos_turnos = {}
-        for i in range(cantidad):
-            fecha = str(datetime.date.today()+ datetime.timedelta(days=i))
-            fecha = fecha.replace("-", "")
-            proximos_turnos.setdefault(fecha, Turno.getHorariosDisponibles(fecha))
-        return proximos_turnos
 
     def estaDisponible(fecha, hora, agente):
         for turno in Turno.objects.all():

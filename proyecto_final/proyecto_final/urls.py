@@ -95,7 +95,6 @@ urlpatterns = [
 
 
     path('Secretaria/AceptarSolicitud',views.Secretaria_AceptarSolicitud, name='Secretaria_AceptarSolicitud'),
-    path('Secretaria/Agenda',views.Secretaria_Agenda, name='Secretaria_Agenda'),
     path('Secretaria/Clientes',views.Secretaria_Clientes, name='Secretaria_Clientes'),
     path('Secretaria/DatosPropiedad',views.Secretaria_DatosPropiedad, name='Secretaria_DatosPropiedad'),
     path('Secretaria/Editar',views.Secretaria_Editar, name='Secretaria_Editar'),

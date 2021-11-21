@@ -41,7 +41,12 @@
 
         <form method="POST" action="">
           {% csrf_token %}
-          {{form.as_p}}
+          <p>Usuario: {{form.username}}</p>
+          <p>Nombre: {{form.first_name}}</p>
+          <p>Apellido: {{form.last_name}}</p>
+          <p>Email: {{form.email}}</p>
+          <p>Contraseña: {{form.password1}}</p>
+          <p>Confirmar contraseña: {{form.password2}}</p>
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Registrarse</button>
           </div>

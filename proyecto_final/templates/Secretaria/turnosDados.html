@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/headerYfooter/estilos.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/General/Inputs/entradas.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Secretaria/Estilos.css' %}">
-    <title>Agenda</title>
+    <title>Turnos</title>
   </head>
 
   <body>
@@ -25,7 +25,7 @@
           {% for message in messages %}
           <div class="text-center alert alert-{{ message.tags }} mx-auto mt-1" style="width: 350px;">
             {{message}}
-            <a class="close" href="" data-dismiss="alert">×</a>
+            <a class="btn-close" style="margin-left:10px;padding-left:10px" href="" data-dismiss="alert"></a>
           </div>
           {% endfor %}
         {% endif %}

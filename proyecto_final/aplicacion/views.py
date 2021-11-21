@@ -39,6 +39,8 @@ def IniciarSesion(request):
                         return redirect("Secretaria_Principal")
                 elif request.user.groups.filter(name='inmobiliario').exists():
                         return redirect("agenteInmobiliario_Principal")
+                else:
+                        return redirect("Principal")
         else:
             messages.error(request,'Usuario o contraseña incorrectos.')
             return redirect('login')
@@ -324,48 +326,44 @@ def Secretaria_AceptarSolicitud(request):
 
 def Secretaria_Agenda(request):
     context = {}
-
-    proximos_turnos = Turno.getProximosTurnos(1)
-    context.setdefault("proximos_turnos", proximos_turnos)
     email_buscado = request.GET.get('email-buscar')
     telefono_buscado = request.GET.get('numero-buscar')
-    fecha_buscada = str(request.GET.get('fecha-buscar')).replace('-', "")
+    fecha_buscada = request.GET.get('fecha-buscar')
 
-    if email_buscado != '' and email_buscado is not None:
+    if email_buscado:
         try:
             cliente = Cliente.objects.get(email__iexact=email_buscado)
             context.setdefault("cliente", cliente)
-            request.session['cliente'] = cliente.id
-            context.setdefault("url", request.get_full_path())
         except:
             context.setdefault("cliente", "")
 
-    if fecha_buscada != "None":
-        if request.session['cliente']:
-            cliente = Cliente.objects.get(pk=request.session['cliente'])
-            context.setdefault("cliente", cliente)
+    if fecha_buscada != "None" and fecha_buscada:
         turnos_disponibles = Turno.getHorariosDisponibles(fecha_buscada)
         context.setdefault("turnos_disponibles", turnos_disponibles)
-        context.setdefault("fecha_buscada", request.GET.get('fecha-buscar'))
+    else:
+        fecha_buscada = datetime.today().strftime('%Y-%m-%d')
+        turnos_disponibles = Turno.getHorariosDisponibles(fecha_buscada)
+        context.setdefault("turnos_disponibles", turnos_disponibles)
 
+    context.setdefault("fecha", fecha_buscada)
     return render(request, 'Secretaria/Agenda.html', context)
 
 
 def esFechaValida(fecha):
     fecha_hoy = int(str(datetime.today().strftime('%Y-%m-%d')).replace("-", ""))
     fecha = int(fecha.replace("/", ""))
-    print(fecha_hoy <= fecha)
     return fecha_hoy <= fecha
 
-def ProgramarCita(request):
-    cliente = Cliente.objects.get(pk=request.session['cliente'])
+def ProgramarCita(request, cliente_id):
+    cliente = Cliente.objects.get(pk=cliente_id)
     fecha_buscada = request.GET.get('fecha-buscar')
 
-    proximos_turnos = Turno.getProximosTurnos(5)
     turnos_disponibles = []
-    if fecha_buscada != "None":
-        fecha = str(fecha_buscada).replace('-', "")
-        turnos_disponibles = Turno.getHorariosDisponibles(fecha)
+    if fecha_buscada:
+        turnos_disponibles = Turno.getHorariosDisponibles(fecha_buscada)
+    else:
+        fecha_buscada = datetime.today().strftime('%Y-%m-%d')
+        turnos_disponibles = Turno.getHorariosDisponibles(fecha_buscada)
 
     if request.method == "POST":
         form = ProgramarCitaForm(request.POST)
@@ -377,14 +375,14 @@ def ProgramarCita(request):
             messages.success(request, 'Cita agendada exitosamente.')
             return redirect('turnos_dados')
         elif not esFechaValida(fecha):
-            messages.error(request, "La fecha ingresada es menor a la actual.")
+            messages.error(request, "Fecha ingresada menor a la actual.")
         elif not Turno.estaDisponible(fecha, hora, agente):
-            messages.error(request, "Ese turno ya fue asignado.")
+            messages.error(request, "Horario no disponible.")
         else:
             messages.error(request, "Se produjo un error y no se completó la carga.")
     else:
         form = ProgramarCitaForm(initial={"cliente":cliente})
-    return render(request, 'Secretaria/programar_cita.html', {'form': form, 'cliente':cliente, 'turnos_disponibles': turnos_disponibles, 'proximos_turnos': proximos_turnos, 'fecha_buscada': fecha_buscada})
+    return render(request, 'Secretaria/programar_cita.html', {'form': form, 'cliente':cliente, 'turnos_disponibles': turnos_disponibles, 'fecha_buscada': fecha_buscada})
 
 
 def EditarCita(request, cita):

@@ -5,10 +5,9 @@
   </a>
   <ul class="dropdown-menu text-center" style="background-color: #ffc852; border: none;" aria-labelledby="dropdownMenuLink">
     <li><a class="dropdown-item" href="{% url 'Secretaria_Solicitudes' %}">Solicitudes</a></li>
+    <li><a class="dropdown-item" href="{% url 'secretaria_agenda' %}">Programar cita</a></li>
     <li><a class="dropdown-item" href="{% url 'turnos_dados' %}?fecha-buscar=">Turnos dados</a></li>
-    <li><a class="dropdown-item" href="{% url 'Secretaria_Agenda' %}">Agendar cita</a></li>
     <li><a class="dropdown-item" href="{% url 'Secretaria_Clientes' %}">Clientes</a></li>
-    <li><a class="dropdown-item" href="{% url 'Secretaria_EditarCita' %}">Editar cita</a></li>
   </ul>
 </div>
 <a class="nav-link fs-5" aria-current="page" href="{% url 'Principal' %}">Inicio</a>
