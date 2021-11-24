@@ -27,4 +27,4 @@
 
 4)Dentro de la carpeta 'proyecto final' ingresamos el codigo desde el comando:
 
-    python manage.py runserver
+    python manage.py runserver # con esto, corremos el servidor y nos mostrará el url de la pagina, en mi caso: 127.0.0:8000
