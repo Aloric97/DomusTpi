@@ -19,7 +19,7 @@
   django-crispy-forms==1.13.0
   
   
-3)Para que la pagina pueda correr correctamente, instalamos las siguientes librerias:
+3)Para que la pagina pueda funcionar correctamente, instalamos las siguientes librerias:
 
   -pip install django
    
