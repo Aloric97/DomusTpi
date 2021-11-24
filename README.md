@@ -10,8 +10,6 @@
   
     Django==3.2.5
   
-    django-materializecss-form==1.1.17
-  
     pytz==2021.1
   
     sqlparse==0.4.1
