@@ -19,8 +19,12 @@
   django-crispy-forms==1.13.0
   
   
-3)Para que la pagina pueda funcionar correctamente, instalamos las siguientes librerias:
+3)Para que la pagina pueda funcionar correctamente, instalamos las siguientes librerias desde cmd:
 
   -pip install django
    
   -pip3 install --user django-crispy-forms
+
+4) Dentro de la carpeta 'proyecto final' ingresamos el codigo desde el comando:
+
+  python manage.py runserver
